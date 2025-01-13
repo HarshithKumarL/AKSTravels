@@ -57,7 +57,7 @@ function Navbar() {
   }, [location]);
 
   const navItems = [
-    { label: "Home", section: "home" },
+    { label: "Home", section: "home", href: "/" },
     { label: "About", section: "about" },
     { label: "Services", section: "services" },
     { label: "Contact", section: "contact" },
@@ -125,7 +125,7 @@ function Navbar() {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden bg-gray-700 shadow-md absolute w-full top-14 left-0">
+          <div className="md:hidden bg-[#d15f02a8] shadow-md absolute w-full top-14 left-0">
             <ul className="flex flex-col items-center py-4 space-y-4 text-[18px] font-medium">
               {navItems.map((item) => (
                 <li key={item.section}>

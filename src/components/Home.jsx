@@ -1,11 +1,14 @@
 import React from "react";
 import aksImg from "../assets/aksimages1.jpg";
+import About from "./About";
+import Services from "./Services";
 
 function Home() {
   return (
     <div
       className="relative w-full h-screen bg-cover bg-right text-white"
       style={{ backgroundImage: `url(${aksImg})` }}
+      id="home"
     >
       <div className="absolute inset-0 bg-black opacity-70"></div>
 
@@ -29,6 +32,9 @@ function Home() {
           GET QUOTE!
         </button>
       </div>
+
+      <About id="about" />
+      <Services id="services" />
     </div>
   );
 }
