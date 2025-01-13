@@ -2,6 +2,7 @@ import React from "react";
 import aksImg from "../assets/aksimages1.jpg";
 import About from "./About";
 import Services from "./Services";
+import Contact from "./Contact";
 
 function Home() {
   return (
@@ -34,7 +35,7 @@ function Home() {
       </div>
 
       <About id="about" />
-      <Services id="services" />
+      <Contact id="contact" />
     </div>
   );
 }
