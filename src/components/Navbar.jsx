@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -42,6 +43,7 @@ function Navbar() {
       });
 
       setActiveSection(currentSection);
+      setIsScrolled(window.scrollY > 50);
     };
 
     const updateActiveSectionFromRoute = () => {
@@ -72,18 +74,24 @@ function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "backdrop-blur-md bg-white/40 shadow-lg" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-2">
         <div className="flex-shrink-0">
-          <div
-            style={{
-              fontFamily: '"Protest Strike", serif',
-              fontSize: "24px",
-              color: "white",
-            }}
-          >
-            AKS TRAVELS
-          </div>
+          <Link to={"/"}>
+            <div
+              style={{
+                fontFamily: '"Protest Strike", serif',
+                fontSize: "24px",
+                color: "white",
+              }}
+            >
+              AKS TRAVELS
+            </div>
+          </Link>
         </div>
         <ul className="hidden md:flex justify-center space-x-8 text-[15px] flex-grow cursor-pointer">
           {navItems.map((item) => (

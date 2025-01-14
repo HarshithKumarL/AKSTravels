@@ -98,7 +98,7 @@ function Services() {
         <div className="relative w-[90%] h-[450px] flex justify-center items-center overflow-hidden">
           {projects.map((project, index) => (
             <Link
-              to={`/project/${project.id}`}
+              to={`/services/${project.id}`}
               key={index}
               className={`absolute h-[420px] w-[300px] bg-white/10 border border-white/20 shadow-xl rounded-xl overflow-hidden transition-transform duration-500 ease-in-out ${
                 index === currentIndex ? "hover:scale-105" : ""
