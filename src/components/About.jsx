@@ -5,11 +5,6 @@ function About() {
     <div
       id="about"
       className="relative w-full min-h-screen md:h-screen bg-cover bg-center bg-black bg-fixed"
-      style={{
-        backgroundImage: "url(/assets/bg-1.png)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
     >
       <div className="flex flex-col justify-center items-center h-full w-full px-4">
         {/* Three Blocks */}

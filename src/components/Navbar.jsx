@@ -15,7 +15,14 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "services", "contact", "quote"];
+      const sections = [
+        "home",
+        "about",
+        "services",
+        "clients",
+        "contact",
+        "quote",
+      ];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
       let currentSection = "home";
 
@@ -60,6 +67,7 @@ function Navbar() {
     { label: "Home", section: "home", href: "/" },
     { label: "About", section: "about" },
     { label: "Services", section: "services" },
+    { label: "Clients ", section: "clients" },
     { label: "Contact", section: "contact" },
   ];
 

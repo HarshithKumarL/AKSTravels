@@ -3,6 +3,7 @@ import aksImg from "../assets/aksimages1.jpg";
 import About from "./About";
 import Services from "./Services";
 import Contact from "./Contact";
+import Clients from "./Clients";
 
 function Home() {
   return (
@@ -35,6 +36,7 @@ function Home() {
       </div>
 
       <About id="about" />
+      <Clients id="clients" />
       <Contact id="contact" />
     </div>
   );
