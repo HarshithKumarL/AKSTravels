@@ -36,6 +36,7 @@ function Home() {
       </div>
 
       <About id="about" />
+      <Services id="services" />
       <Clients id="clients" />
       <Contact id="contact" />
     </div>
