@@ -53,7 +53,7 @@ function Clients() {
             { img: img1, name: "Elanco" },
             { img: img2, name: "Merkle" },
             { img: img3, name: "Ugam" },
-            { img: img1, name: "Elanco" }, // Repeat for a fourth box, or use another image if needed
+            { img: img4, name: "Qualitest" }, // Repeat for a fourth box, or use another image if needed
           ].map((client, index) => (
             <div
               key={index}

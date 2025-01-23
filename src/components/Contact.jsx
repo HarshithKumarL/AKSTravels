@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import emailjs from "emailjs-com";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -6,7 +7,6 @@ function Contact() {
     email: "",
     contact: "",
     message: "",
-    reason: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -58,7 +58,7 @@ function Contact() {
     return newErrors;
   };
 
-  // Handle Input Changes
+  //Handle Input Changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -76,7 +76,60 @@ function Contact() {
     setErrors({});
     setStatus("loading");
 
-    console.log("submit");
+    try {
+      // Send email using EmailJS
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        contact: formData.contact,
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.REACT_APP_EMAILJS_USER_ID
+      );
+
+      alert("Your message has been sent!");
+
+      // Optionally, clear the form
+      setFormData({
+        name: "",
+        email: "",
+        contact: "",
+        message: "",
+      });
+      setStatus("");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("There was an error sending your message. Please try again later.");
+      setStatus("");
+    }
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      from_contact: formData.contact, // Sender's email (this is from the user submitting the form)
+      message: formData.message,
+    };
+
+    emailjs
+      .send(
+        "service_ve6izjf", // Your EmailJS service ID
+        "template_me0fk9h", // Your EmailJS template ID
+        templateParams, // Data from the form (name, email, message)
+        "7BHJlkmlO2GnFqOAp" // Your EmailJS user ID)
+      )
+      .then(
+        (result) => {
+          console.log("Email sent:", result.text);
+        },
+        (error) => {
+          console.log("Error sending email:", error.text);
+        }
+      );
   };
 
   return (
@@ -101,11 +154,8 @@ function Contact() {
           </p>
           <p className="text-gray-300 mb-4">
             📧 Email me at:{" "}
-            <a
-              href="mailto:meghananarayana55@gmail.com"
-              className="text-[#d16002]"
-            >
-              shekarNarayan@gmail.com
+            <a href="mailto:bookings@akstravels.com" className="text-[#d16002]">
+              bookings@akstravels.com
             </a>
           </p>
           <p className="text-gray-300 mb-4">
@@ -115,7 +165,7 @@ function Contact() {
           <p className="text-gray-300 mb-4">
             💬 Let’s connect:
             <a
-              href="https://www.linkedin.com/in/meghananarayana/"
+              href=""
               target="_blank"
               className="text-Apricot hover:text-white"
             >
@@ -124,9 +174,10 @@ function Contact() {
             </a>{" "}
             |
             <a
-              href="https://github.com/meghanan266"
+              href=""
               target="_blank"
               className="text-Apricot hover:text-white"
+              rel="noreferrer"
             >
               {" "}
               Facebook

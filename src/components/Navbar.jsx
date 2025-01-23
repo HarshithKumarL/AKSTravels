@@ -162,18 +162,6 @@ function Navbar() {
                   </button>
                 </li>
               ))}
-              <li>
-                <button
-                  onClick={() => {
-                    setActiveSection("quote");
-                    handleScrollToSection("quote");
-                    setIsMenuOpen(false);
-                  }}
-                  className="montserrat-uniquifier tracking-wide transition duration-300 text-white hover:text-[#d16002]"
-                >
-                  Get Quote
-                </button>
-              </li>
             </ul>
           </div>
         )}

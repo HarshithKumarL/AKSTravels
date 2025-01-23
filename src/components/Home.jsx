@@ -27,12 +27,12 @@ function Home() {
           </h2>
         </div>
 
-        <a
+        <button
           href="#contact"
           className="mt-8 font-urbanist inline-block bg-[#d16002] text-white font-semibold px-8 py-4 rounded-full hover:bg-Apricot hover:text-Blueberry transition duration-300 ease-in-out transform hover:scale-105"
         >
           GET QUOTE!
-        </a>
+        </button>
       </div>
 
       <About id="about" />
