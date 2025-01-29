@@ -28,9 +28,6 @@
       "react-app/jest"
     ]
   },
-  "engines": {
-    "pnpm": ">=6.0.0"
-  },
   "browserslist": {
     "production": [
       ">0.2%",

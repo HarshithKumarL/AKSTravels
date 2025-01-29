@@ -28,6 +28,9 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: [".js", ".jsx"], // Allows omitting file extensions
+  },
   plugins: [
     new CleanWebpackPlugin(), // Cleans up old build files
     new HtmlWebpackPlugin({
