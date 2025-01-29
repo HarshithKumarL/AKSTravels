@@ -7,7 +7,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "[name].[contenthash].js", // Use content hash for caching
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../dist"),
     publicPath: "/", // Ensure proper routing for Firebase hosting
   },
   mode: "production",
