@@ -2,14 +2,13 @@
     "version": 2,
     "builds": [
         {
-            "src": "webpack/webpack.prod.js",
-            "use": "@vercel/webpack"
+            "src": "webpack/webpack.prod.js"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/build/index.html"
+            "dest": "build/index.html"
         }
     ]
 }
