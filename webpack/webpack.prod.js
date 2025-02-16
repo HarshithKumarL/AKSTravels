@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { InjectManifest } = require("workbox-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -22,7 +23,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "style-loader",
+          "css-loader",
+          "postcss-loader",
+        ],
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
@@ -48,6 +54,9 @@ module.exports = {
         { from: "public/manifest.json", to: "manifest.json" },
         { from: "public/favicon.ico", to: "favicon.ico" },
       ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css", // Extracted CSS file names
     }),
     new InjectManifest({
       swSrc: "./src/service-worker.js", // Source of your Service Worker file
