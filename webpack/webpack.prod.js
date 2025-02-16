@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { InjectManifest } = require("workbox-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -36,6 +37,12 @@ module.exports = {
     new CleanWebpackPlugin(), // Cleans up old build files
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "public/manifest.json", to: "manifest.json" },
+        { from: "public/favicon.ico", to: "favicon.ico" },
+      ],
     }),
     new InjectManifest({
       swSrc: "./src/service-worker.js", // Source of your Service Worker file
