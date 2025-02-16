@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: "[name].[contenthash].js", // Use content hash for caching
     path: path.resolve(__dirname, "../build"),
-    publicPath: "./",
+    publicPath: "/",
     clean: true,
   },
   mode: "production",
@@ -28,7 +28,7 @@ module.exports = {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         type: "asset/resource",
         generator: {
-          filename: "assets/[name].[contenthash][ext]",
+          filename: "assets/[name].[contenthash][ext]", // Output path for images
         },
       },
     ],
