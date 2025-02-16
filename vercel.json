@@ -1,17 +1,14 @@
 {
+    "builds": [
+        {
+            "src": "package.json",
+            "use": "@vercel/node"
+        }
+    ],
     "routes": [
         {
             "src": "/(.*)",
             "dest": "/index.html"
-        }
-    ],
-    "builds": [
-        {
-            "src": "webpack/webpack.prod.js",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "build"
-            }
         }
     ]
 }
