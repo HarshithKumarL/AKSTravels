@@ -4,5 +4,14 @@
             "src": "/(.*)",
             "dest": "/index.html"
         }
+    ],
+    "builds": [
+        {
+            "src": "webpack/webpack.prod.js",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "build"
+            }
+        }
     ]
 }
