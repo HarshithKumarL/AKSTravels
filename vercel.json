@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "webpack/webpack.prod.js",
+            "use": "@vercel/webpack"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/build/index.html"
+        }
+    ]
+}

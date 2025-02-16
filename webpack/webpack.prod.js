@@ -8,6 +8,7 @@ module.exports = {
   output: {
     filename: "[name].[contenthash].js", // Use content hash for caching
     path: path.resolve(__dirname, "../build"),
+    publicPath: "/",
     clean: true,
   },
   mode: "production",
