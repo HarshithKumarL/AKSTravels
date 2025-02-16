@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: "[name].[contenthash].js", // Use content hash for caching
     path: path.resolve(__dirname, "../build"),
-    publicPath: "/",
+    publicPath: "./",
     clean: true,
   },
   mode: "production",
@@ -37,6 +37,8 @@ module.exports = {
     new CleanWebpackPlugin(), // Cleans up old build files
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+      filename: "index.html",
+      inject: "body",
     }),
     new CopyPlugin({
       patterns: [
