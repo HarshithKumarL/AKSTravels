@@ -1,9 +1,13 @@
 {
-    "rewrites": [
+    "version": 2,
+    "builds": [
         {
-            "source": "/(.*)",
-            "destination": "/index.html"
+            "src": "package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "installlCommand": " ",
+                "buildCommand": "npm run build"
+            }
         }
-    ],
-    "outputDirectory": "build"
+    ]
 }
