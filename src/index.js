@@ -4,21 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
-  // Register the service worker after the page loads
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/service-worker.js")
-      .then((registration) => {
-        console.log(
-          "Service Worker registered with scope:",
-          registration.scope
-        );
-      })
-      .catch((error) => {
-        console.log("Service Worker registration failed:", error);
-      });
-  });
+if (process.env.NODE_ENV === "production") {
+  // Register service worker in production
+  navigator.serviceWorker
+    .register("/service-worker.js")
+    .then((registration) => {
+      console.log("Service Worker registered with scope:", registration.scope);
+    })
+    .catch((error) => {
+      console.log("Service Worker registration failed:", error);
+    });
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

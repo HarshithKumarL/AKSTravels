@@ -1,30 +1,30 @@
 /* eslint-disable no-restricted-globals */
-// self refers to the global scope of the Service Worker
+
+// Precache all the assets generated during the build
 self.addEventListener("install", (event) => {
+  self.skipWaiting(); // Skip waiting and activate immediately
+
   event.waitUntil(
     caches.open("my-cache").then((cache) => {
-      // Cache essential files for offline use
+      // The generated assets will be automatically injected here by Workbox
       return cache.addAll([
         "/",
         "/index.html",
-        "/bundle.js",
-        "/styles.css", // Your stylesheets or other assets
-        ...self.__WB_MANIFEST,
+        "/favicon.ico",
+        ...self.__WB_MANIFEST, // Automatically includes hashed files like main.chunk.js
       ]);
     })
   );
 });
 
+// Fetch event: Serve cached assets if available
 self.addEventListener("fetch", (event) => {
-  // Intercept network requests and serve from cache if available
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
-        return cachedResponse; // Return cached file
+        return cachedResponse; // Return cached response if available
       }
-
-      // If the request isn't in cache, fetch it from the network
-      return fetch(event.request);
+      return fetch(event.request); // Otherwise, fetch from network
     })
   );
 });
