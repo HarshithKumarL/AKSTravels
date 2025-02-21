@@ -6,7 +6,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: path.resolve(__dirname, "../src/index.js"),
   output: {
     filename: "[name].[contenthash].js", // Use content hash for caching
     path: path.resolve(__dirname, "../build"),
@@ -19,7 +19,12 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"], // Use these presets
+          },
+        },
       },
       {
         test: /\.css$/,
