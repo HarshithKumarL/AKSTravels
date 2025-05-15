@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import img1 from "../assets/aksbus.jpg";
 import img2 from "../assets/premiumcar.jpg";
 import img3 from "../assets/sedan.jpg";
@@ -7,6 +7,7 @@ import img4 from "../assets/minibus.jpg";
 import img5 from "../assets/sevenseater.jpg";
 
 function Services() {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const projects = [
@@ -36,6 +37,12 @@ function Services() {
       image: `${img4}`,
     },
   ];
+
+  const handleSelectService = (vehicleName) => {
+    navigate(`services/${vehicleName}`, {
+      state: { selectedVehicle: vehicleName },
+    });
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -97,9 +104,9 @@ function Services() {
         {/* Carousel */}
         <div className="relative w-[90%] h-[450px] flex justify-center items-center overflow-hidden">
           {projects.map((project, index) => (
-            <Link
-              to={`/services/${project.id}`}
+            <div
               key={index}
+              onClick={() => handleSelectService(project.id)}
               className={`absolute h-[420px] w-[300px] bg-white/10 border border-white/20 shadow-xl rounded-xl overflow-hidden transition-transform duration-500 ease-in-out ${
                 index === currentIndex ? "hover:scale-105" : ""
               }`}
@@ -118,7 +125,7 @@ function Services() {
                   {project.name}
                 </h3>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 
